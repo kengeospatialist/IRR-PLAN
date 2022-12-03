@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" class="bi bi-plus-circle">
+ <g class="layer">
+  <title>Layer 1</title>
+  <path d="m8,4a0.5,0.5 0 0 1 0.5,0.5l0,3l3,0a0.5,0.5 0 0 1 0,1l-3,0l0,3a0.5,0.5 0 0 1 -1,0l0,-3l-3,0a0.5,0.5 0 0 1 0,-1l3,0l0,-3a0.5,0.5 0 0 1 0.5,-0.5z" fill="#ffffff" id="svg_2" stroke="#ffffff" transform="matrix(1 0 0 1 0 0)"/>
+  <path d="m8,15a7,7 0 1 1 0,-14a7,7 0 0 1 0,14zm0,1a8,8 0 1 0 0,-16a8,8 0 0 0 0,16z" id="svg_1"/>
+  <path d="m7.98,5.5a0.31,0.31 0 0 1 0.31,0.31l0,1.83l1.89,0a0.31,0.31 0 0 1 0,0.61l-1.89,0l0,1.83a0.31,0.31 0 0 1 -0.63,0l0,-1.83l-1.89,0a0.31,0.31 0 0 1 0,-0.61l1.89,0l0,-1.83a0.31,0.31 0 0 1 0.31,-0.31z" fill="#000000" id="svg_3" stroke-width="0.5"/>
+ </g>
+</svg>

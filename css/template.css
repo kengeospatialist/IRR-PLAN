@@ -1,0 +1,803 @@
+/*CUSTOM CSS AND CSS OVERWRITES*/
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+html,
+body,
+#map {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.hideEditBtn {
+    display: none;
+}
+
+.easy-button-button.disabled {
+    height: 0;
+}
+
+.leaflet-container {
+    background: rgb(255, 255, 255);
+    outline: 0;
+}
+
+.form-switch .form-check-input {
+    width: 3em;
+    height: 1.5em;
+}
+
+#mapTitle {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index:
+        1000;
+    pointer-events: none;
+    padding: 5px;
+    border: solid 1px;
+    width: fit-content;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+/*TEXT COLORS*/
+.text-red {
+    color: red;
+}
+
+/*DISPLAY */
+.dsp-none {
+    display: none;
+}
+
+.modalContent {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.modal-contentHeader {
+    background-color: #006399;
+    ;
+    width: 180px !important;
+    padding: 30px;
+    padding-bottom: 5px;
+    border-start-start-radius: 10px;
+    border-start-end-radius: 10px;
+}
+
+.modal-contentHeader-closeBtn {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    margin-top: -30px;
+    font-weight: bold;
+}
+
+.modal-contentBody {
+    background-color: white;
+    width: 180px !important;
+    padding: 30px;
+    border-end-end-radius: 10px;
+    border-end-start-radius: 10px;
+}
+
+.modal-contentBody div {
+    padding-top: 10px;
+}
+
+.modal-contentBody input {
+    /*width: 100% ;*/
+}
+
+.modal-contentBody select {
+    width: 100% !important;
+}
+
+.modal-contentBody button {
+    width: 100% !important;
+}
+
+#editorContainer {
+    font-size: 16px;
+    display: none;
+    border-radius: 5px;
+    border: 5px solid #ccc;
+    Position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+    z-index: 1000;
+    background-color: white;
+}
+
+#editorContainer .editorTitle {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#editorContainer .editorContent {
+    padding: 5px;
+}
+
+#editorContainer .editorContent input {
+    font-size: 14px;
+}
+
+#editorContainer .editorContent input[type=color] {
+    padding: .5px .5px;
+    height: 20px;
+}
+
+#editorContainer .editorContent select {
+    font-size: 14px;
+    width: 100%;
+}
+
+#editorContainer .editorContent button {
+    margin: 5px 0 5px 0;
+    font-size: 14px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-inline-flex {
+    display: inline-flex;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-auto {
+    width: auto !important;
+}
+
+.m-1 {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+#saveLoadingModal {
+    display: none;
+    position: fixed;
+    z-index: 1800;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#saveLoadingModal .loadingHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1810;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#saveLoadingModal #saveLoadingDropbox {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#saveLoadingModal #saveLoadingDropbox img {
+    width: 40px;
+    height: 40px
+}
+
+#saveLoadingModal #saveLoadingDropbox h5 {
+    color: white;
+    text-align: center;
+}
+
+#saveLoadingModal #saveLoadingDropboxMsg {
+    color: white;
+    text-align: center;
+    max-width: 200px;
+    display: none;
+}
+
+#modalSaveAs {
+    display: none;
+    position: fixed;
+    z-index: 1600;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modalSaveAs #modalSaveAs-content {
+    background-color: #006399;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+#modalSaveAs #modalSaveAs-content #modalSaveAsMsg {
+    color: red;
+}
+
+#modalSettings {
+    display: none;
+    position: fixed;
+    z-index: 1600;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modalSettings #modalSettings-content {
+    background-color: #006399;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+#modalUpload {
+    display: none;
+    position: fixed;
+    z-index: 1600;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modalUpload #modalUpload-content {
+    background-color: #006399;
+    margin: 15%;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+#modalPrint {
+    display: none;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1600;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#modalPrint #modalPrint-content {
+    background-color: #006399;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 1710;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.custom-modal .custom-modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1720;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.custom-modal .custom-modal-content img {
+    width: 80px;
+    height: 80px;
+}
+
+.custom-modal .custom-modal-content h5 {
+    color: white;
+    text-align: center;
+}
+
+.customCloseBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1710;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+
+/*GEOLET ICONS*/
+.geolet-dsp-none {
+    display: none;
+}
+
+.geolet-control-holder {
+    height: 100%;
+    outline: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.geolet-control-outer {
+    border: 2px solid green;
+    background-color: white;
+    width: 12px;
+    height: 12px;
+    padding: 3px;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.geolet-control-inner {
+    background-color: green;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.geolet-active-outer {
+    border: 2px solid red;
+    background-color: white;
+    width: 12px;
+    height: 12px;
+    padding: 3px;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.geolet-active-inner {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/*GEOMAN ICONS*/
+.color-blue {
+    color: white;
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+}
+
+.color-blue-div {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: #0000ff;
+    width: 18px;
+    height: 18px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.zone-icon-geoman {
+    background-image: url("../images/geoman/zoneIcon.png");
+}
+
+.color-gray {
+    color: black;
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.color-gray-div {
+    background-color: black;
+    width: 18px;
+    height: 18px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.zoneValve-geoman {
+    background-color: rgb(0, 255, 0);
+    width: 18px;
+    height: 18px;
+    color: black;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 20%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.zoneValve-icon-geoman {
+    background-image: url("../images/geoman/zoneValveIcon.png");
+}
+
+.mainValve-geoman {
+    background-color: rgb(0, 255, 0);
+    width: 18px;
+    height: 18px;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 20%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.masterValve-icon-geoman {
+    background-image: url("../images/geoman/masterValveIcon.png");
+}
+
+.color-gray-rotor-head-div {
+    background-color: black;
+    width: 18px;
+    height: 18px;
+    color: white;
+    font-size: 10px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.rotorHeadInner {
+    width: 4px;
+    height: 4px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.rotorHead-icon-geoman {
+    /*border: 12px double;
+    border-radius: 50%;*/
+    background-image: url("../images/svg/svgtarget.svg");
+}
+
+.color-gray-spray-head-div {
+    background-color: black;
+    width: 18px;
+    height: 18px;
+    color: white;
+    font-size: 10px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.rotor-head-icon {
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    color: white;
+    font-size: 10px;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+
+}
+
+.spray-head-icon {
+    background-color: white;
+    width: 16px;
+    height: 16px;
+    color: white;
+    font-size: 10px;
+    border: 5px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
+
+.sprayHead-icon-geoman {
+    border: 7px solid;
+    border-radius: 50%;
+    /*background-image: url("../images/geoman/sprayHeadIcon.png");*/
+}
+
+/*   Controller   */
+.color-yellow {
+    color: yellow;
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.color-yellow-controller-div {
+    background-color: yellow;
+    width: 18px;
+    height: 18px;
+    color: black;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 20%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.controller-icon-geoman {
+    background-image: url("../images/geoman/controllerIcon.png");
+}
+
+/*   Backflow  */
+.color-red {
+    color: red;
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.color-red-backflow-div {
+    background-color: rgb(153, 0, 255);
+    width: 18px;
+    height: 18px;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 20%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.backflow-icon-geoman {
+    background-image: url("../images/geoman/backflowIcon.png");
+}
+
+/*   Valve Box  */
+.color-purple {
+    color: purple;
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.masterValve-div {
+    background-color: rgb(255, 153, 0);
+    width: 18px;
+    height: 18px;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 20%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.masterValve-icon-geoman {
+    background-image: url("../images/geoman/masterValveIcon.png");
+}
+
+.color-red-valveBox-div {
+    background-color: red;
+    width: 18px;
+    height: 18px;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 20%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.shutoffValve-icon-geoman {
+    background-image: url("../images/geoman/shutoffValveIcon.png");
+}
+
+.color-green {
+    color: green;
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/*   Others   */
+.color-orange {
+    color: orange;
+    box-sizing: border-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.color-orange-others-div {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.color-orange-others-div-circle {
+    background-color: rgb(217, 217, 217);
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.r-50{
+    border-radius: 50%;
+}
+
+.r-20{
+    border-radius: 20%;
+}
+
+.r-0{
+    border-radius: 0;
+}
+
+.others-icon-geoman {
+    background-color: rgb(255, 255, 255);
+    width: 18px;
+    height: 18px;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    /*background-image: url("../images/geoman/othersIcon.png");*/
+}
+
+.line-blue {
+    color: blue;
+    background-image: url("../images/svg/horizontal-line-svgrepo-com.svg");
+}
+
+.line-red {
+    color: red;
+    background-image: url("../images/svg/border-dotted-svgrepo-com.svg");
+}
+
+.esri-dynamic-attribution{
+    display: none;
+}
+
+.easyPrintHolder .letterCssClass {
+    background-image: url(data:image/svg+xml;utf8;base64,PD9...go=);
+}
+
+.pointer-events{
+    pointer-events: none;
+    opacity: 0.9;
+}

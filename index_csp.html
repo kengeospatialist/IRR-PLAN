@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--Cross Site Policy-->
+    <meta http-equiv="Content-Security-Policy" content="
+    script-src 'self' dropbox.com *.dropbox.com cloudflare.com *.cloudflare.com 
+    jsdelivr.net *.jsdelivr.net 'sha256-nzHi23DROym7G011m6y0DyDd9mvQL2hSJ0Gy3g2T/5Q=' ;
+    style-src 'self' dropbox.com *.dropbox.com cloudflare.com *.cloudflare.com 
+    jsdelivr.net *.jsdelivr.net 'sha256-nzHi23DROym7G011m6y0DyDd9mvQL2hSJ0Gy3g2T/5Q=' ;
+    img-src 'self' tile.openstreetmap.org server.arcgisonline.com tile.thunderforest.com 
+    api.tiles.mapbox.com data:">
+    <!--<script src="js/app-secure.js"></script>-->
+    <!--<link rel="stylesheet" href="css/leaflet.css">-->
+    <link rel="stylesheet" href="plugins/leaflet_rotate/leaflet.css">
+    <link rel="stylesheet" href="plugins/leaflet.compass/leaflet-compass.css">
+    <link rel="stylesheet" href="plugins/leaflet-geoman-master/src/css/leaflet-geoman.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/easy-button.css">
+    <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+    <link rel="stylesheet" href="plugins/Leaflet.PolylineMeasure-master/Leaflet.PolylineMeasure.css">
+    <link rel="apple-touch-icon" sizes="128x128" href="images/mobileappicon.png">
+    <link rel="stylesheet" href="css/template.css">
+    <!-- DropBox -->
+    <script type="text/javascript"  src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs"
+        data-app-key="48qgmvwo3ydv1fp"></script>
+    <title></title>
+</head>
+
+<body>
+    <div id="map">
+        <div id="mapTitle">
+            Map Title
+        </div>
+    </div>
+
+    <div id="editorContainer" class="">
+        <div class="editorTitle">
+            Feature Attribute
+        </div>
+        <div class="editorContent">
+            <div id="editorContainerMsg" class="text-red"></div>
+            <small>Name</small><br />
+            <input type="text" id="name" placeholder="Enter Name" disabled /><br />
+            <small>Label</small><br />
+            <input type="text" id="label" placeholder="Enter Label" /><br />
+            <small>Notes</small><br />
+            <input type="text" id="notes" placeholder="Enter Notes" /><br />
+            <small>Date Created</small><br />
+            <input type="text" id="datecreated" placeholder="Enter Date Created" disabled/><br />
+            <small>Date Modified</small><br />
+            <input type="text" id="datemodified" placeholder="Enter Date Modified" disabled/><br />
+            <div>
+                <button class="float-left" onclick="saveAttributes()">Save</button>
+                <button class="float-right" onclick="closeEditoContainer()">Close</button>
+            </div>
+        </div>
+    </div>
+    <!-- Loading Modal -->
+    <div id="saveLoadingModal" class="modal">
+        <!-- Modal Loading -->
+        <div class="loadingHolder">
+            <div>
+                <div id="saveLoadingDropbox">
+                    <img src="images/loading-buffering.gif" /><br />
+                    <h5>Saving...</h5>
+                </div>
+                <h4 id="saveLoadingDropboxMsg">
+                </h4>
+            </div>
+        </div>
+    </div>
+    <!-- Export Data Modal -->
+    <div id="modalSaveAs" class="modal">
+        <!-- Modal content -->
+        <div class="modalContent" >
+            <div class="modalSaveAs-content">
+                <div class="modal-contentHeader">
+                    <span id="modalSaveAsCloseBtn" class="modal-contentHeader-closeBtn">&times;</span>
+                </div>
+                <div class="modal-contentBody" >
+                    <form id="modalSaveAsForm" onsubmit="event.preventDefault(); ">
+                        <div id="modalSaveAsMsg" class="text-red"></div>
+                        <input type="text" id="file-name" placeholder="File Name" pattern="[a-zA-Z0-9 ]+" required>
+                        <div >
+                            <select id="file-download-type" >
+                                <option value="choose">Choose</option>
+                                <option value="point">Point Data</option>
+                                <option value="line">Line Data</option>
+                                <option value="point and line">Point and Line Data</option>
+                            </select>
+                        </div>
+                        <div >
+                            <button id="modalSaveAsDownloadBtn" type="button" >Download</button>
+                        </div>
+                        <!--<div>
+                            <button type="button" onclick="validateFormAndSave('saveToDropBox');">Save to Dropbox</button>
+                        </div>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal-->
+    <div id="modalUpload" class="modal">
+        <!-- Modal content -->
+        <div class="modalContent">
+            <div class="modalUpload-content">
+                <div class="modal-contentHeader" >
+                    <span id="modalUploadCloseBtn" class="modal-contentHeader-closeBtn">&times;</span>
+                </div>
+                <div class="modal-contentBody">
+                    <div>
+                        <input type="file" id="uploadGeojsonfile" accept=".geojson" >
+                        <!--accept=".geojson"-->
+                    </div>
+                    <div>
+                        <button id="chooseFromDropboxBtn">
+                            Choose from Dropbox
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print Modal-->
+    <div id="modalPrint" class="modal" >
+        <!-- Modal content -->
+        <div class="modalContent">
+            <div class="modalPrint-content">
+                <div class="modal-contentHeader">
+                    <span id="modalPrintCloseBtn" class="modal-contentHeader-closeBtn">&times;</span>
+                </div>
+                <div class="modal-contentBody">
+                    <div>
+                        File Type:<br>
+                        <select id="print-module" onchange="printModuleChange()">
+                            <option value="easyprint">PNG Export</option>
+                            <!--<option value="appmodule">App Module - Development</option>-->
+                        </select>
+                    </div>
+                    <div>
+                        File name:<br />
+                        <input type="text" id="print-file-name" placeholder="File Name" value="My Map" pattern="[a-zA-Z0-9 ]+" required>
+                    </div>
+                    <div id="easy-print-module">
+                        <div>
+                            Paper Size:<br>
+                            <select id="easyprint-paper-size" >
+                                <option value="A4Portrait page">A4 Portrait</option>
+                                <option value="A4Landscape page">A4 Landscape</option>
+                                <option value="CurrentSize">Current Size</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="app-print-module" class="dsp-none">
+                        <div class="text-red">
+                        </div>
+                        <div>
+                            Output format:<br>
+                            <select id="print-output" >
+                                <option value="PNG">PNG IMAGE</option>
+                                <option value="PDF">PDF</option>
+                            </select>
+                        </div>
+                        <div>
+                            Paper Size:<br />
+                            <select id="print-paper-size" >
+                                <!--Paper sizes from http://www.cbrubin.net/digital_skills/print&scan/size.html at 75ppi-->
+                                <option value="letter" data-a="612" data-b="792">Letter</option>
+                                <option value="legal" selected data-a="612" data-b="1008">Legal</option>
+                                <option value="tabloid" data-a="792" data-b="1224">Tabloid</option>
+                                <!--Paper sizes from https://www.papersizes.org/a-sizes-in-pixels.htm at 75ppi-->
+                                <option value="a3" data-a="841.89" data-b="1190.55">A3</option>
+                                <option value="a4" selected data-a="595.28" data-b="841.89">A4</option>
+                                <option value="a5" data-a="419.53" data-b="595.28">A5</option>
+                                <option value="a6" data-a="297.64" data-b="419.53">A6</option>
+                            </select> Orientation:
+                            <br />
+                            <div>
+                                <input type="radio" id="portrait" name="orientation" value="portrait" checked>
+                                <label for="huey">Portrait</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="landscape" name="orientation" value="landscape">
+                                <label for="landscape">Landscape</label>
+                            </div>
+                        </div>
+                        <div >
+                            Printing Extend:<br />
+                            <select id="print-extend" >
+                                <!--Paper sizes from http://www.cbrubin.net/digital_skills/print&scan/size.html at 75ppi-->
+                                <option value="">Choose..</option>
+                                <option value="pointdata">Point Data</option>
+                                <option value="linedata">Line Data</option>
+                            </select>
+                        </div>
+                        <!--<div >
+                            <input type="checkbox" id="saveToDropboxCheckbox" name="saveToDropboxCheckbox" value="saveToDropbox">
+                            <label for="saveToDropboxCheckbox"> Save to dropbox</label><br>
+                        </div>-->
+                    </div>
+                    <div>
+                        <button type="button" id="printButton">Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="printingLoading" class="modal custom-modal">
+        <!-- Modal Loading -->
+        <div id="printingLoadingContent" class="custom-modal-content">
+            <div>
+                <img src="images/loading-buffering.gif" ><br />
+                <h5 >Printing..</h5>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalMap" class="modal custom-modal">
+        <!-- Modal content -->
+        <div class="custom-modal-content">
+            <h3 class="customCloseBtn"
+                onclick="hideModal()">X</h3>
+            <div class="modal-content" id="modalMapContent">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--<script src="js/leaflet.js"></script>-->
+    <!--Replace original leaflet -->
+    <script src="plugins/leaflet_rotate/leaflet-src.js"></script>
+    <script src="plugins/leaflet.compass/leaflet-compass.js"></script>
+    <script src="plugins/html-to-image/html-to-image.js"></script>
+    <script src="plugins/html2pdf/html2pdf.bundle.min.js"></script>
+    <script src="plugins/js-pdf/jspdf.min.js"></script>
+    <script src="plugins/html-to-image/download.js"></script>
+    <script src="plugins/file_saver/FileSaver.min.js"></script>
+    <script src="js/easy-button.js"></script>
+    <script src="plugins/leaflet-geoman-master/src/js/leaflet-geoman-ken.min.js"></script>
+    <!--<script src="plugins/easy-print/bundle.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-easyprint@2.1.9/dist/bundle.min.js"></script>
+    <!--<script src="js/leaflet.rotatedMarker.js"></script>-->
+    <!--<script src="js/leaflet.pattern.js"></script>-->
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <!--<script src="js/rbush.min.js"></script>-->
+    <!--<script src="js/labelgun.min.js"></script>-->
+    <!--<script src="js/labels.js"></script>-->
+    <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+    <script src="plugins/Leaflet.PolylineMeasure-master/Leaflet.PolylineMeasure.js"></script>
+    <script src="plugins/leaflet-geolet-main/geolet.js"></script>
+    <!--App JS-->
+    <script src="js/aap.js"></script>
+
+</body>
+
+</html>
